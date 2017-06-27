@@ -28,15 +28,6 @@ Ongoing
 - Start the API server with ```python app.py```.
 
 
-***
-
-Using flask_migrate. Also trying a join-table.
-
-An example of a query I can use with this setup.
-```
-Channel.query.first().subscribers.first().name
-```
-
 ## Oops
 
 This exercise has evolved beyond its initial scope, I'm pretty much making it up as I go.
