@@ -1,9 +1,9 @@
-from flask import jsonify
-from app import BASE_URL
+from flask import jsonify, request
+from app import BASE_URL, db
 from serializers import channel
 
-from db import db
-Channel = db.Channel
+from db import manage
+Channel = manage.Channel
 
 def index():
     return jsonify({
@@ -16,3 +16,9 @@ def show(id):
         '_home': BASE_URL,
         'channel': [channel.channelSerializer(c) for c in Channel.query.filter_by(id=id)][0]
     })
+
+def new():
+    newChannel = Channel(request.json['id'], request.json['name'])
+    db.session.add(newChannel)
+    db.session.commit()
+    return index()

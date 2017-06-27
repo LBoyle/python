@@ -2,8 +2,8 @@ from flask import jsonify
 from app import BASE_URL
 from serializers import user
 
-from db import db
-User = db.User
+from db import manage
+User = manage.User
 
 def index():
     return jsonify({

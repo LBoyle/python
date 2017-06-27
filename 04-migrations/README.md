@@ -23,7 +23,7 @@ Ongoing
 
 - Install Flask dependancies with pip.
 
-- Ensure PostgreSQL is running and create the DB with ```python db/db.py db init```, ```python db/db.py db migrate``` then ```python db/db.py db upgrade``` in that order.
+- Ensure PostgreSQL is running and create the DB with ```python db/manage.py db init```, ```python db/manage.py db migrate``` then ```python db/manage.py db upgrade``` in that order.
 
 - Seed data with ```python db/seeds.py```.
 

@@ -22,10 +22,17 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(20))
     subscriptions = db.relationship('Channel', secondary=subs, backref=db.backref('subscribers', lazy='dynamic'))
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
 
 class Channel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(20))
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
 
 if __name__ == '__main__':
     manager.run()
