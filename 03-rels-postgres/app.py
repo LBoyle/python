@@ -10,7 +10,9 @@ class Person(db.Model):
     name = db.Column(db.Unicode(20))
     pets = db.relationship('Pet', backref='owner', lazy='dynamic')
 # backref is a virtual column
-# lazy allows querying
+# lazy allows querying as follows
+# Person.query.all()[0].pets.all()
+# etc. 
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
