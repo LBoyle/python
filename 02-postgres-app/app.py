@@ -41,10 +41,9 @@ def examplesShow(id):
 
 @app.route('/examples', methods=['POST'])
 def examplesCreate():
-    ex = Example(request.json['id'], request.json['data'])
-    db.session.add(ex)
+    db.session.add(Example(request.json['id'], request.json['data']))
     db.session.commit()
-    return jsonify(request.json)
+    return examplesIndex()
 
 
 if __name__ == '__main__':
