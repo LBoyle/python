@@ -15,12 +15,18 @@ Ongoing
 <small>Linux or OSX</small>
 
 - Clone the repo
+
 - Create virtualenv in the project root, I use ```virtualenv -p python3 venv``` and activate with ```. venv/bin/activate```.
+
 - Install Flask dependancies with pip.
+
 - Create the DB, ensure PostgreSQL is running with ```python db/db.py db init```, ```python db/db.py db migrate``` then ```python db/db.py db upgrade``` in that order.
+
+- Seed data with ```python db/seeds.py```.
+
 - Start the API server with ```python app.py```.
 
-No seeded data provided.
+
 ***
 
 Using flask_migrate. Also trying a join-table.
