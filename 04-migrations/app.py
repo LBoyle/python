@@ -1,11 +1,12 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
-BASE_URL = 'http://localhost:8080'
-from controllers import base, users, channels
 
 app = Flask(__name__)
-app.config.from_pyfile('config.cfg')
+app.config.from_object('config.DevConfig')
+BASE_URL = app.config['BASE_URL']
 db = SQLAlchemy(app)
+
+from controllers import base, users, channels
 
 @app.route('/', methods=['GET'])
 def home():

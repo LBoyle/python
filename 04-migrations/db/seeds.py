@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from db import User, Channel
 
 app = Flask(__name__)
-app.config.from_pyfile('../config.cfg')
+app.config.from_object('config.DevConfig')
 db = SQLAlchemy(app)
 
 u1 = User(id=1, name='Louis')
