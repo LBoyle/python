@@ -15,6 +15,9 @@ def home():
 @app.route('/users', methods=['GET'])
 def usersIndex():
     return users.index()
+@app.route('/users', methods=['POST'])
+def usersNew():
+    return users.new()
 @app.route('/users/<int:id>', methods=['GET'])
 def usersShow(id):
     return users.show(id)
