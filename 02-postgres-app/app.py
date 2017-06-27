@@ -39,6 +39,13 @@ def examplesIndex():
 def examplesShow(id):
     return jsonify({'examples': [{'id': example.id, 'data': example.data} for example in Example.query.filter_by(id=id)][0]})
 
+@app.route('/examples', methods=['POST'])
+def examplesCreate():
+    ex = Example(request.json['id'], request.json['data'])
+    db.session.add(ex)
+    db.session.commit()
+    return jsonify(request.json)
+
 
 if __name__ == '__main__':
     # manager.run()
