@@ -30,6 +30,6 @@ Ongoing
 
 ## Oops
 
-This exercise has evolved beyond its initial scope, I'm pretty much making it up as I go.
+This exercise has exceeded its initial scope, I'm pretty much making it up as I go because I'm having fun.
 
 I've based this so far on my knowledge of other MVC frameworks, specifically Express.js and Rails.

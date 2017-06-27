@@ -10,7 +10,7 @@ u1 = User(id=1, name='Louis')
 u2 = User(id=2, name='John')
 
 c1 = Channel(id=1, name='LTT')
-c2 = Channel(id=2, name='Epic Meal Time')
+c2 = Channel(id=2, name='EMT')
 
 c1.subscribers.append(u1)
 c1.subscribers.append(u2)
