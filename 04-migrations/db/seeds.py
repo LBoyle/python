@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from db import User, Channel
+from manage import User, Channel
 
 app = Flask(__name__)
-app.config.from_object('config.DevConfig')
+app.config.from_pyfile('dbconf.cfg')
 db = SQLAlchemy(app)
 
 u1 = User(id=1, name='Louis')

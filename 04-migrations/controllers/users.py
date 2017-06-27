@@ -22,3 +22,9 @@ def new():
     db.session.add(newUser)
     db.session.commit()
     return index()
+
+def delete(id):
+    toDelete = User.query.filter_by(id=id).first()
+    db.session.delete(toDelete)
+    db.session.commit()
+    return index()
