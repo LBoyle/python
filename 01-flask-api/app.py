@@ -4,8 +4,8 @@ app = Flask(__name__)
 languages = [{'name': 'JavaScript'}, {'name': 'Python'}, {'name': 'Ruby'}]
 
 @app.route('/', methods=['GET'])
-def test():
-    return jsonify({'message': 'It works!'})
+def index():
+    return jsonify({'message': 'Homepage'})
 
 @app.route('/langs', methods=['GET'])
 def langsIndex():
@@ -14,6 +14,12 @@ def langsIndex():
 @app.route('/langs/<string:name>', methods=['GET'])
 def langsOne(name):
     return jsonify({'language': [language for language in languages if language['name'] == name][0]})
+
+@app.route('/langs', methods=['POST'])
+def langsCreate():
+    lang = {'name': request.json['name']}
+    languages.append(lang)
+    return jsonify({'languages': languages})
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
