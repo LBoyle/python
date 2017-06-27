@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
-from db import User, Channel
+from controllers import users, channels
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -13,11 +13,17 @@ def home():
 
 @app.route('/users', methods=['GET'])
 def usersIndex():
-    return jsonify({'users': [{'id': user.id,'name': user.name, 'subscriptions': [{'': channel.id, 'name': channel.name} for channel in user.subscriptions]} for user in User.query.all()]})
+    return users.usersIndex()
+@app.route('/users/<int:id>', methods=['GET'])
+def usersShow(id):
+    return users.usersShow(id)
 
 @app.route('/channels', methods=['GET'])
 def channelsIndex():
-    return jsonify({'channels': [{'id': channel.id, 'name': channel.name, 'subscribers': [{'id': user.id, 'name': user.name} for user in channel.subscribers]} for channel in Channel.query.all()]})
+    return channels.channelsIndex()
+@app.route('/channels/<int:id>', methods=['GET'])
+def channelsShow(id):
+    return channels.channelsShow(id)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
