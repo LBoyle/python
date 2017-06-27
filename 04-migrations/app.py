@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
-
-from controllers import users, channels
+BASE_URL = 'http://localhost:8080'
+from controllers import base, users, channels
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({'message': 'Welcome to the site'})
+    return base.home()
 
 @app.route('/users', methods=['GET'])
 def usersIndex():
