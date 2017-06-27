@@ -27,5 +27,11 @@ def langsEdit(name):
     langs[0]['name'] = request.json['name']
     return jsonify({'language': langs[0]})
 
+@app.route('/langs/<string:name>', methods=['DELETE'])
+def langsRemove(name):
+    lang = [lang for lang in languages if lang['name'] == name]
+    languages.remove(lang[0])
+    return jsonify({'languages': languages})
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
