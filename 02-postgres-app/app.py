@@ -45,6 +45,11 @@ def examplesCreate():
     db.session.commit()
     return examplesIndex()
 
+@app.route('/examples/<int:id>', methods=['PUT'])
+def examplesUpdate(id):
+    toUpdate = Example.query.filter_by(id=id).first()
+    toUpdate.data = request.json['data']
+    return examplesIndex()
 
 if __name__ == '__main__':
     # manager.run()
