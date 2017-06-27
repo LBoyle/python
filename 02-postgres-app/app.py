@@ -49,6 +49,14 @@ def examplesCreate():
 def examplesUpdate(id):
     toUpdate = Example.query.filter_by(id=id).first()
     toUpdate.data = request.json['data']
+    db.session.commit()
+    return examplesIndex()
+
+@app.route('/examples/<int:id>', methods=['DELETE'])
+def examplesDelete(id):
+    toDelete = Example.query.filter_by(id=id).first()
+    db.session.delete(toDelete)
+    db.session.commit()
     return examplesIndex()
 
 if __name__ == '__main__':
