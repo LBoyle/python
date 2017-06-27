@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 from flask_script import Manager
@@ -34,6 +34,11 @@ def index():
 @app.route('/examples', methods=['GET'])
 def examplesIndex():
     return jsonify({'examples': [{'id': example.id, 'data': example.data} for example in Example.query.all()]})
+
+@app.route('/examples/<int:id>', methods=['GET'])
+def examplesShow(id):
+    return jsonify({'examples': [{'id': example.id, 'data': example.data} for example in Example.query.filter_by(id=id)][0]})
+
 
 if __name__ == '__main__':
     # manager.run()
