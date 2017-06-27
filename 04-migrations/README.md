@@ -17,7 +17,7 @@ Ongoing
 - Clone the repo
 - Create virtualenv in the project root, I use ```virtualenv -p python3 venv``` and activate with ```. venv/bin/activate```.
 - Install Flask dependancies with pip.
-- Create the DB, ensure PostgreSQL is running with ```python db.py db init```, ```python db.py db migrate``` then ```python db.py db upgrade``` in that order.
+- Create the DB, ensure PostgreSQL is running with ```python db/db.py db init```, ```python db/db.py db migrate``` then ```python db/db.py db upgrade``` in that order.
 - Start the API server with ```python app.py```.
 
 No seeded data provided.

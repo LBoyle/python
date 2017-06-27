@@ -2,7 +2,8 @@ from flask import jsonify
 from app import BASE_URL
 from serializers import channel
 
-from db import Channel
+from db import db
+Channel = db.Channel
 
 def index():
     return jsonify({'_home': BASE_URL, 'channels': [channel.channelSerializer(c) for c in Channel.query.all()]})
