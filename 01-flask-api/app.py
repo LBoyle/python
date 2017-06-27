@@ -13,13 +13,19 @@ def langsIndex():
 
 @app.route('/langs/<string:name>', methods=['GET'])
 def langsOne(name):
-    return jsonify({'language': [language for language in languages if language['name'] == name][0]})
+    return jsonify({'language': [lang for lang in languages if lang['name'] == name][0]})
 
 @app.route('/langs', methods=['POST'])
 def langsCreate():
     lang = {'name': request.json['name']}
     languages.append(lang)
     return jsonify({'languages': languages})
+
+@app.route('/langs/<string:name>', methods=['PUT'])
+def langsEdit(name):
+    langs = [lang for lang in languages if lang['name'] == name]
+    langs[0]['name'] = request.json['name']
+    return jsonify({'language': langs[0]})
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
